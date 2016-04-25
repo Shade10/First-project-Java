@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl" th:fragment="head">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+	<div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+					<span>
+						<a class="navbaritem" href="#" th:href="@{/}">Strona Główna</a>
+                        <a class="navbaritem" href="#" th:href="@{/mapa}">Mapa - Dane</a>
+                        <a class="navbaritem" href="#" th:href="@{/testy1}">Testy1!!!</a>
+                        <a class="navbaritem" href="#" th:href="@{/administracja}">Administracja</a>
+                        <br />
+                        <a class="navbaritem" href="#" th:href="@{/index2}">Nowa - Strona Główna</a>
+					</span>
+                </div>
+            </div>
+        </nav>
+	</div>
+</div>
+
+</body>
+</html>

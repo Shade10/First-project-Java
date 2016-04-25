@@ -1,0 +1,99 @@
+
+.example-page-header{
+	color: blue;
+}
+.row.border *
+{
+border :2px solid;
+}
+
+.overlap_preventer {
+	min-height: 52px;
+}
+
+#map1 {
+	border: 2px solid;
+	padding: 20px; 
+	resize: both;
+	width: 80%; 
+	margin-left: auto;
+    margin-right: auto;
+	min-height: calc(100vh - 200px);
+}
+
+#map_status {
+	resize: both;
+	width: 80%; 
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#powrot_gora {
+	float: right;
+}
+
+#Nav_Title {
+	font-size: 2em;
+	text-align: center;
+	color: darkgreen;
+}
+
+#Nav_Title_row {
+	background-color: #F8F8F8;
+}
+
+#parentMenu {<!--from   w w w .j a  v  a2  s  .c  om-->
+  display: block;
+  top: 0;
+}
+
+#testy1_dane {
+	margin-top:60px;
+}
+
+.modal-body {
+	margin: 10px;
+}
+
+/* Styles for submenu*/
+
+/* Helps position submenu */
+.dropdown-submenu {
+  position: relative;
+}
+/* Menus under the submenu should show up on the right of the parent */
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
+/* Make submenu visible when hovering on link */
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+/* Add carot to submenu links */
+.dropdown-submenu>a:after {
+  display: block;
+  float: right;
+  /*simple */
+  content: "?";
+  color: #cccccc;
+  /* looks a little better */
+  content: " ";
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+/* Change carot color on hover */
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}

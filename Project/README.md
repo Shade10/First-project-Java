@@ -1,0 +1,1 @@
+![pusto.png](https://bitbucket.org/repo/K484Xp/images/329621611-pusto.png)

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Mienie komunalne - navigation menu</title>
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- <script src="js/bootstrap.js"></script> -->
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style_index2.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container" th:fragment="header">
+    <nav class="navbar navbar-fixed-top">
+        <div class="row" id="Nav_Title_row">
+            <div id="Nav_Title" class="col-xs-12 col-sm-6 col-lg-8">
+                <p>Portal Mienia Komunalnego</p>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-lg-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <div id="powrot_gora">
+                        <a class="navbar-brand" href="#">Do góry strony/Menu</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="overlap_preventer"></div> -->
+    <div class="row">
+        <div class="overlap_preventer"></div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- <li class="active"><a href="#" th:href="@{/index2}">Strona Główna</a></li> -->
+                        <li><a th:href="@{/index2}">Strona Główna</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Zasoby<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" th:href="@{/index2show(what='ogolem',howmany='2',whattype='')}">Ogółem</a></li>
+                                <li role="separator" class="divider"></li>
+
+                                <!--Way to implemen submenu -->
+                                <li class="dropdown-submenu">
+                                    <a>Lokale użytkowe</a>
+                                    <ul class="dropdown-menu">
+
+                                        <li><a th:href="@{/index2show(what='budynkiGznk', howmany='2',whattype='')}">Budynki GZNK</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#" th:href="@{/index2show(what='wspolnota',howmany='2',whattype='')}">Wspólnoty mieszkaniowe</a></li>
+                                <li><a href="#" th:href="@{/index2show(what='pustostan',howmany='2',whattype='')}">Pustostany</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#" 
+                                	th:href="@{/index2show(what='dzialkaniezagospod',howmany='2',whattype='')}">
+                                	Działki niezagospodarowane</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Dodatkowe opcje:</li>
+                                <li><a href="#"
+                                       th:href="@{/index2show(what='dzialka',howmany='2',whattype='')}">Działki miejskie</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Tereny<br/>Zieleni<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" data-target="#brakParkowModal1">Parki</a></li>
+                                <li><a href="#"
+                                       th:href="@{/index2show(what='park',howmany='2',whattype='2')}">Skwery</a></li>
+                                <li><a href="#"
+                                       th:href="@{/index2show(what='park',howmany='2',whattype='3')}">Zieleńce</a></li>
+                                <li><a href="#"
+                                       th:href="@{/index2show(what='park',howmany='2',whattype='4')}">Zieleń przy drogach</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Infrastruktura<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" data-target="#myModal1">Sektory śmieciowe</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal1">Drogi</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Placówki<br/>Oświatowe<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" 
+										th:href="@{/index2show(what='placowka',howmany='2',whattype='1')}">Przedszkola</a></li>
+                                <li><a href="#" 
+										th:href="@{/index2show(what='placowka',howmany='2',whattype='2')}">Szkoły</a></li>
+                                <li><a href="#" 
+										th:href="@{/index2show(what='placowka',howmany='2',whattype='4')}">Schroniska</a></li>
+                                <li><a href="#" 
+										th:href="@{/index2show(what='placowka',howmany='2',whattype='5')}">Ośrodki kultury</a></li>
+                                <li><a href="#" 
+										th:href="@{/index2show(what='boisko',howmany='2',whattype='1')}">Boiska</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Szukaj wg.<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" data-target="#modalAdresSearch">Adres
+                                    (testing...)</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modalBOMSearch">BOM</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal">Wspólnota</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal1">Działka</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal1">Lokal użytkowy</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModalKontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h4 class="text-center" th:text="${page_title}"></h4>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!-- Modal for BOM search -->
+    <div id="modalBOMSearch" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Szukaj według</h4>
+                </div>
+                <div class="modal-body">
+                    <p>BOM (Biuro Obsługi Użytkownika) </p>
+                    <form class="form-horizontal" role="form" th:object="${formDataGatherer}"
+                          th:action="@{/searchbybom}" method="post">
+                        <div class="form-group">
+                            <label class="label-class1">Podaj numer BOM:</label>
+                            <div class="input-class1">
+                                <input type="text" class="form-control" th:field="*{nrBOM}"/>
+                                <div th:if="${#fields.hasErrors('nrBOM')}" th:errors="*{nrBOM}">Błąd - Numer BOM</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for Adres search -->
+    <div id="modalAdresSearch" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Szukaj według</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Szukaj według Adresu</p>
+                    <form class="form-horizontal" role="form" th:object="${formDataGatherer}" id="szukaj_adres_form"
+                          th:action="@{/searchbyadres}" method="post">
+                        <div class="form-group">
+                            <label class="label-class1">Ulica (główna część nazwy, np. Chopina):</label>
+                            <div class="input-class1">
+                                <input type="text" class="form-control" th:field="*{ulica2}" id="szukaj_ulica_1"
+                                value="" placeholder="ulica (część główna nazwy)" autocomplete="off"/>
+                                <div th:if="${#fields.hasErrors('ulica2')}" th:errors="*{ulica2}">Błąd - ulica główna część
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label-class1">Ulica (część dodatkowa nazwy, np. Fryderyka lub aleja):</label>
+                            <div class="input-class1">
+                                <input type="text" class="form-control" th:field="*{ulica1}" placeholder="ulica (część dodatkowa nazwy)"/>
+                                <div th:if="${#fields.hasErrors('ulica1')}" th:errors="*{ulica1}">Błąd - ulica dodatkowa część
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label-class1">Numer:</label>
+                            <div class="input-class1">
+                                <input type="text" class="form-control" th:field="*{nrUlica}"/>
+                                <div th:if="${#fields.hasErrors('nrUlica')}" th:errors="*{nrUlica}">Błąd - numer ulicy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-default" id="szukaj_btn_submit">Submit</button>
+                            <button class="btn btn-danger" type="reset" id="reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="brakParkowModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Brak Parków</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Brak Parków w dzielnica Strzyża.<br/>Ta wersja programu pokazuje tylko tereny zieleni w dzielnicy Strzyża w Gdańsku</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myModalKontakt" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Kontakt</h4>
+                </div>
+                <div class="modal-body">
+                    <p>W przygotowaniu!<br/>Tutaj będzie można znaleźć informacje kontaktowe i/lub zostawić wiadomość</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header - "w przygotowaniu"</h4>
+                </div>
+                <div class="modal-body">
+                    <p>W przygotowaniu!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header - "w przygotowaniu"</h4>
+                </div>
+                <div class="modal-body">
+                    <p>W przygotowaniu!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+	<script>
+	<!--
+    $('#modalAdresSearch').on('hidden.bs.modal', function () {
+        $(".modal-body").html("");
+    })
+    -->
+    </script>
+</div>
+<!-- End of th:fragment, that is included -->
+
+
+<li><a href="#" th:href="@{/index2show(what='dzialka',howmany='2')}">Działki(all)</a></li>
+<li>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+</li>
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+        <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li class="dropdown-header">Nav header</li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+    </ul>
+</li>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Default</a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-8">
+            ...
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-8">2...</div>
+        <div class="col-xs-12 col-sm-6 col-lg-8">3...</div>
+    </div>
+</div>
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+-->
+</body>
+</html>

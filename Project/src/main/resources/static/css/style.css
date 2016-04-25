@@ -1,0 +1,18 @@
+#map {
+	border: 2px solid;
+	padding: 20px; 
+	resize: both; 
+	width:w;
+	min-height: calc(100vh - 140px);
+
+}
+
+#dane{
+	border: 2px solid;
+	width:300px;
+	float: left;
+}
+
+
+	      
+	     

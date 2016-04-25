@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <!-- <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" /> -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Mienie komunalne Index2</title>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+    -->
+    
+    <!-- jquery links, cdn not working? webjars? z przykładu?
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    -->
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <script type="text/javascript" src="js/script.js"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style_index2.css" rel="stylesheet"/>
+
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/navmenu :: header"></th:block> /*/-->
+</div>
+
+
+
+<div id="map1"></div>
+<p id="map_status">Status info... ? We can place some text here as status</p>
+
+<div class="container" id="dane">
+    
+    <table class="table table-striped" style="display:none;" id="table1" border="1">
+        <tr>
+        	<th>Type of atribute</th>
+            <th>LP</th>
+            <th>latitude</th>
+            <th>longitude</th>
+            <th>opis</th>
+        </tr>
+        <div th:if="${not #lists.isEmpty(dzialkim)}">
+            <tr th:each="dzialkam : ${dzialkim}">
+                <td class="typeofatribute" th:text="dzialkam">typeofatribute</td>
+                <td class="rowId" th:text="${dzialkam.lp}">lp działki</td>
+                <td class="latitude" th:text="${dzialkam.lati}">latitude</td>
+                <td class="longitude" th:text="${dzialkam.longi}">longitude</td>
+                <td class="opis">opis</td>
+            </tr>
+        </div>
+        <div th:if="${not #lists.isEmpty(wspolnota_atr)}">
+            <tr th:each="wspolnota : ${wspolnota_atr}">
+                <td class="typeofatribute" th:text="wspolnota">typeofatribute</td>
+                <td class="rowId" th:text="${wspolnota.lp}">lp wspolnoty</td>
+                <td class="latitude" th:text="${wspolnota.lati}">latitude</td>
+                <td class="longitude" th:text="${wspolnota.longi}">longitude</td>
+                <td class="opis">opis</td>
+            </tr>
+        </div>
+        <div th:if="${not #lists.isEmpty(pustostan_atr)}">
+            <tr th:each="pustostan : ${pustostan_atr}">
+                <td class="typeofatribute" th:text="pustostan">typeofatribute</td>
+                <td class="rowId" th:text="${pustostan.lp}">lp pustostanu</td>
+                <td class="latitude" th:text="${pustostan.lati}">latitude</td>
+                <td class="longitude" th:text="${pustostan.longi}">longitude</td>
+                <td class="opis">opis</td>
+            </tr>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(budynkiGznk_atr)}">
+            <tr th:each="budynkiGznk : ${budynkiGznk_atr}">
+                <td class="typeofatribute" th:text="budynkiGznk">typeofatribute</td>
+                <td class="rowId" th:text="${budynkiGznk.lp}">lp budynkiGznk</td>
+                <td class="latitude" th:text="${budynkiGznk.lati}">latitude</td>
+                <td class="longitude" th:text="${budynkiGznk.longi}">longitude</td>
+                <td class="opis">opis</td>
+            </tr>
+        </div>
+        <div th:if="${not #lists.isEmpty(placowka_atr)}">
+	    	<tr th:each="placowka : ${placowka_atr}">
+	    		<td class="typeofatribute" th:text="placowka">typeofatribute</td>
+	    		<td class="rowId" th:text="${placowka.lp}">lp placowki</td>
+	    		<td class="latitude" th:text="${placowka.lati}">latitude</td>
+	    		<td class="longitude" th:text="${placowka.longi}">longitude</td>
+	    		<td class="opis">opis</td>
+	    	</tr>
+    	</div>
+    	<div th:if="${not #lists.isEmpty(dzialkaniezagospod_atr)}">
+	    	<tr th:each="dzialkanz : ${dzialkaniezagospod_atr}">
+	    		<td class="typeofatribute" th:text="dzialkaniezagospod">typeofatribute</td>
+	    		<td class="rowId" th:text="${dzialkanz.lp}">lp placowki</td>
+	    		<td class="latitude" th:text="${dzialkanz.lati}">latitude</td>
+	    		<td class="longitude" th:text="${dzialkanz.longi}">longitude</td>
+	    		<td class="opis">opis</td>
+	    	</tr>
+    	</div>
+    	<div th:if="${not #lists.isEmpty(park_atr)}">
+	    	<tr th:each="park : ${park_atr}">
+	    		<td class="typeofatribute" th:text="parktypeofatribute">typeofatribute</td>
+	    		<td class="rowId" th:text="${park.lp}">lp skweru</td>
+	    		<td class="latitude" th:text="${park.lati}">latitude</td>
+	    		<td class="longitude" th:text="${park.longi}">longitude</td>
+	    		<td class="opis" th:text="${park.rodzajopis}">opis</td>
+	    	</tr>
+    	</div>
+    </table>
+</div>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/details :: details_fragment"></th:block> /*/-->
+</div>
+<script>
+	function LatLong(lat,lng) {
+		this.lat = lat;
+		this.lng = lng;
+	}
+			
+	google.maps.event.addDomListener(window, 'load', function initialize1() {
+		<!-- draw the map -->
+	    var mapCanvas1 = document.getElementById('map1');
+	    
+	    var mapOptions1 = {
+	      center: new google.maps.LatLng(54.386748, 18.585155),
+	      zoom: 15,
+	    }
+	    var map = new google.maps.Map(mapCanvas1, mapOptions1);  
+	    var tbl = $('#table1');
+		var budynekId;
+		var ulica;
+		var nr;
+		var lati;
+		var longi;
+		var myLatiLongi;
+		var markertitle = 'default marker title';
+		var zoomneeded = 15;
+		tbl.find('tr').each(function(){
+			lp =  $(this).find(".rowId").html();		
+			typeofatribute = $(this).find(".typeofatribute").html();
+			lati = Number($(this).find(".latitude").html());
+			longi = Number($(this).find(".longitude").html());
+			opistext = $(this).find(".opis").html();
+			var markertitle;
+			var markerlink;
+			if(typeofatribute=="parktypeofatribute"){
+				markertitle = "LP: "+String(lp)+", (Zieleń), ..."+String(opistext);
+				markerlink = '<a href="/details?what=park&amp;lp='+String(lp)+'">Link</a>';
+			}
+			if(typeofatribute=="dzialkam"){
+				markertitle = "LP: "+String(lp)+", dzialka Miejska";
+			}
+			if(typeofatribute=="wspolnota"){
+				markertitle = "LP: "+String(lp)+", Wspólnota mieszkaniowa";
+				markerlink = '<a href="/details?what=wspolnota&amp;lp='+String(lp)+'">Link</a>';
+			}
+			if(typeofatribute=="pustostan"){
+				markertitle = "LP: "+String(lp)+", Pusty lokal";
+				markerlink = '<a href="/details?what=pustostan&amp;lp='+String(lp)+'">Link</a>';
+			}
+			if(typeofatribute=="budynkiGznk"){
+				markertitle = "LP: "+String(lp)+", Budynek GZNK";
+				markerlink = '<a href="/details?what=lokaluzytkowy&amp;lp='+String(lp)+'">Link</a>';
+			}
+			if(typeofatribute=="dzialkaniezagospod"){
+				markertitle = "LP: "+String(lp)+", Grupa działek niezagospodarowanych";
+				markerlink = '<a href="/details?what=dzialkaniezagospod&amp;lp='+String(lp)+'">Link</a>';
+				zoomneeded = 12;
+			}
+			if(typeofatribute=="placowka"){
+				markertitle = "LP: "+String(lp)+", Placówki";
+				markerlink = '<a href="/details?what=placowka&amp;lp='+String(lp)+'">Link</a>';
+			}
+			myLatiLongi = new LatLong(lati,longi);
+			var marker = new google.maps.Marker({
+			    position: myLatiLongi,
+			    map: map,
+			    title: markertitle,
+			    visible: true
+			  });
+			
+			google.maps.event.addListener(marker, 'click', function () {
+				// where I have added .html to the marker object.
+				infowindow.setContent(markertitle+'<br/>'+markerlink);
+				infowindow.open(map, this);
+				});
+		});
+		map.setZoom(zoomneeded);
+		var element = document.getElementById ("detailsStartHere");
+		if (element != null){
+			alignWithTop = true;
+			element.scrollIntoView(alignWithTop);
+		}
+		
+		infowindow = new google.maps.InfoWindow({
+			content: "holding..."
+			});
+
+	});
+	
+	$(document).ready(function() {
+	    $("#reset").click(function() {
+	        $(':input','#szukaj_adres_form').val("");
+	    });
+	});
+</script>
+
+</body>
+</html>

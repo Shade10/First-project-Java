@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+    <!-- <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" /> -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="../../favicon.ico"/>
+
+    <title>Mienie komunalne Details</title>
+</head>
+<body>
+<div id="detailsTag" class="container" th:fragment="details_fragment">
+<div class="container" id="testy1_dane">
+	<div th:if="${dzialkaniezagospod_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły grupy działek niezagospodarowanych</h2>
+	    <table class="table table-striped" id="details_dzialkaniezagospod" border="1" >
+		<tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+			
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres (opisowy)</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getAdres_opis()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Numer obrębu</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getNr_obrebu()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Numery działek</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getDzialki_str()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getPowierzchnia()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Właściciel</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getWlasciciel()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Użytkownik wieczysty</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getUzytkownik_wieczysty()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>MPZP (Miejski plan zagospodarowania przestrzennego)</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getMpzp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Tesselate</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getTesselate()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Koordynaty</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getCoordinates()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Szerokość geograficzna</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getLati()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Długość geograficzna</td>
+			<td th:text="${dzialkaniezagospod_atr_single.getLongi()}"></td>
+			<td></td>
+	    </tr>
+	    </table>
+	</div>
+	<div th:if="${wspolnota_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły wspólnoty mieszkaniowej</h2>
+	    <table class="table table-striped" id="details_wspolnota" border="1" >
+		<tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+			
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${wspolnota_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Kod wspólnoty</td>
+			<td th:text="${wspolnota_atr_single.getKodWspolnota()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Uwagi</td>
+			<td th:text="${wspolnota_atr_single.getUwagi()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba budynków tworzących wspólnotę</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaBudynkow()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali ogółem</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliOgol()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali mieszkalnych</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliMieszk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali użytkowych</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliUzytk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali mieszkalnych (gmina)</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliGminaMieszk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali użytkowych (gmina)</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliGminaUzytk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali mieszkalnych (wykupionych)</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliWykupMieszk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali użytkowych (wykupionych)</td>
+			<td th:text="${wspolnota_atr_single.getLiczbaLokaliWykupUzytk()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa  ogółem</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytOgol()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali mieszkalnych</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytOgolMieszk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali użytkowych</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytOgolUzytk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali mieszkalnych (gmina)</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytGminaMieszk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali użytkowych (gmina)</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytGminaUzytk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali mieszkalnych (wykupionych)</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytWykupMieszk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa ogólna lokali użytkowych (wykupionych)</td>
+			<td th:text="${wspolnota_atr_single.getPowUzytWykupUzytk()}"></td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Udział gminy we współwłasności</td>
+			<td th:text="${wspolnota_atr_single.getUdzialGmina()}"></td>
+			<td>%</td>
+	    </tr>
+	    <tr>
+			<td>Udział indywidualnych właścicieli we współwłasności</td>
+			<td th:text="${wspolnota_atr_single.getUdzialIndywidual()}"></td>
+			<td>%</td>
+	    </tr>
+	    <tr>
+			<td>Zarządca</td>
+			<td th:text="${wspolnota_atr_single.getZarzadca()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>BOM (biuro obsługi mieszkańców)</td>
+			<td th:text="${wspolnota_atr_single.getBom()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Szerokość geograficzna</td>
+			<td th:text="${wspolnota_atr_single.getLati()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Długość geograficzna</td>
+			<td th:text="${wspolnota_atr_single.getLongi()}"></td>
+			<td></td>
+	    </tr>
+	    </table>
+	</div>
+
+
+	<div th:if="${budynek_gznk_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły Obiektu GZNK</h2>
+	    <table class="table table-striped" id="details_budynek_gznk" border="1" >
+		<tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${budynek_gznk_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Uwagi</td>
+			<td th:text="${budynek_gznk_atr_single.getUwagi()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba (budynków) mieszkalnych</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbamieszkalne()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba (budynków) użytkowych</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbauzytkowe()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba (budynków) garaży</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbagaraze()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali, ogólna</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbalokali()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali mieszkalnych</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbalokalimieszk()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba izb</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbaizb()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia lokali mieszkalnych</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_lokalimieszk()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Liczba lokali użytkowych</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbalokaliuzytk()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia lokali użytkowych</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_lokaliuzytk()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Liczba garaży w budynku/budynkach?</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbagarazy()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia garaży w budynku/budynkach?</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_garazybudynek()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Liczba garaży (boksów)</td>
+			<td th:text="${budynek_gznk_atr_single.getLiczbagarazyboksow()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia garaży wolnostojących</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_garazywolnosto()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Ogółem powierzchnia użytkowa budynku/budynków?</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_uzytkbudynek()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia c.o. w budynku</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_co_budynek()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia c.w.</td>
+			<td th:text="${budynek_gznk_atr_single.getPow_cw()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Dzielnica</td>
+			<td th:text="${budynek_gznk_atr_single.getDzielnica()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Rok budowy</td>
+			<td th:text="${budynek_gznk_atr_single.getRokbudowy()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Kubatura budynku/budynków</td>
+			<td th:text="${budynek_gznk_atr_single.getKubatura_budynki()}">xxx</td>
+			<td>m. sześcienne</td>
+	    </tr>
+	    <tr>
+			<td>Media: woda (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_woda()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Media: kanalizacja (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_kanal()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Media: gaz (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_gaz()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Media: łazienka (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_lazienka()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Media: c.o. (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_co()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Media: c.w. (liczba lokali)</td>
+			<td th:text="${budynek_gznk_atr_single.getMedia_liczbalok_cw()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Działka miejska</td>
+			<td >(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Szerokość geograficzna</td>
+			<td th:text="${budynek_gznk_atr_single.getLati()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Długość geograficzna</td>
+			<td th:text="${budynek_gznk_atr_single.getLongi()}">xxx</td>
+			<td></td>
+	    </tr>
+	    </table>
+	</div>	
+	<div th:if="${pustostan_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły Pustostanu</h2>
+	    <table class="table table-striped" id="details_pustostan" border="1" >
+	    <tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${pustostan_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Numer lokalu</td>
+			<td th:text="${pustostan_atr_single.getNrlokalu()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia użytkowa</td>
+			<td th:text="${pustostan_atr_single.getPow_uzytkowa()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Liczba pokoi</td>
+			<td th:text="${pustostan_atr_single.getLiczba_pokoi()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia mieszkalna</td>
+			<td th:text="${pustostan_atr_single.getPow_mieszkalna()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Pomieszczenia inne</td>
+			<td th:text="${pustostan_atr_single.getPomieszczenia_inne()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Wspólny/samodzielny</td>
+			<td th:text="${pustostan_atr_single.getWspol_czy_samo()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Ogrzewanie</td>
+			<td th:text="${pustostan_atr_single.getOgrzewanie()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Zarząd</td>
+			<td th:text="${pustostan_atr_single.getZarzad()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Uwagi</td>
+			<td th:text="${pustostan_atr_single.getUwagi()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Data zwolnienia</td>
+			<td th:text="${pustostan_atr_single.getData_zwolnienia()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Działka miejska</td>
+			<td >(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Szerokość geograficzna</td>
+			<td th:text="${pustostan_atr_single.getLati()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Długość geograficzna</td>
+			<td th:text="${pustostan_atr_single.getLongi()}">xxx</td>
+			<td></td>
+	    </tr>
+	    </table>
+	</div>
+	<div th:if="${park_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły terenu zieleni</h2>
+	    <table class="table table-striped" id="details_park" border="1" >
+	    <tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${park_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Rodzaj terenu zieleni</td>
+			<td th:text="${park_atr_single.getRodzajopis()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Nazwa</td>
+			<td th:text="${park_atr_single.getNazwa()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia ogólna</td>
+			<td th:text="${park_atr_single.getPowOgolna()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia do sprzątania</td>
+			<td th:text="${park_atr_single.getPowSprzatanie()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: trawniki</td>
+			<td th:text="${park_atr_single.getPowTrawniki()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Skupiny krzewów</td>
+			<td th:text="${park_atr_single.getSkupinyKrzewy()}">xxx</td>
+			<td>szt.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: skupiny krzewów</td>
+			<td th:text="${park_atr_single.getPowSkupinyKrzewy()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: żywopłoty</td>
+			<td th:text="${park_atr_single.getPowZywoplot()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: żywopłoty, do cięcia</td>
+			<td th:text="${park_atr_single.getPowZywoplotCiecie()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Zieleń ozdobna (rodzaj) (w przygotowaniu)</td>
+			<td th:text="${park_atr_single.getRodzajZielOzdoba()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia zieleni ozdobnej</td>
+			<td th:text="${park_atr_single.getPowZielOzdoba()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: place i chodniki</td>
+			<td th:text="${park_atr_single.getPowPlaceChodnik()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Ławki stałe</td>
+			<td th:text="${park_atr_single.getLawkiStale()}">xxx</td>
+			<td>szt.</td>
+	    </tr>
+	    <tr>
+			<td>Kosze stałe</td>
+			<td th:text="${park_atr_single.getKoszeStale()}">xxx</td>
+			<td>szt.</td>
+	    </tr>
+	    <tr>
+			<td>Kosze na psie odchody</td>
+			<td th:text="${park_atr_single.getKoszePsieodch()}">xxx</td>
+			<td>szt.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: wybiegi dla psów</td>
+			<td th:text="${park_atr_single.getPowPsyWybieg()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Place zabaw/piaskownice</td>
+			<td th:text="${park_atr_single.getPlacZabaw()}">xxx</td>
+			<td>szt.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: place zabaw/piaskownice</td>
+			<td th:text="${park_atr_single.getPowPlacZabaw()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Murki</td>
+			<td th:text="${park_atr_single.getDlugoscMurki()}">xxx</td>
+			<td>m.</td>
+	    </tr>
+	    <tr>
+			<td>Powierzchnia: akcja zima nowa</td>
+			<td th:text="${park_atr_single.getPowAkcaZimanowa()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>    
+	    <tr>
+			<td>Szerokość geograficzna</td>
+			<td th:text="${park_atr_single.getLati()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Długość geograficzna</td>
+			<td th:text="${park_atr_single.getLongi()}"></td>
+			<td></td>
+	    </tr>
+	 	</table>
+	 </div>
+	 <div th:if="${placowka_atr_single != null}">
+		<div class="row">
+			<div class="overlap_preventer" id="detailsStartHere"></div>
+		</div>
+		<h2>Szczegóły placówki</h2>
+	    <table class="table table-striped" id="details_park" border="1" >
+	    <tr>
+			<th>Parametr</th>
+			<th>Opis/Wartość</th>
+			<th>Jednostka</th>
+		</tr>
+		<tr>
+			<td>Liczba porządkowa (w bazie danych)</td>
+			<td th:text="${placowka_atr_single.getLp()}"></td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Rodzaj Placówki (w przygotowaniu)</td>
+			<td th:text="${placowka_atr_single.getRodzaj()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Nazwa</td>
+			<td th:text="${placowka_atr_single.getNazwa()}">xxx</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Adres</td>
+			<td>(w przygotowaniu)</td>
+			<td></td>
+	    </tr>
+	    <tr>
+			<td>Dzielnica</td>
+			<td th:text="${placowka_atr_single.getDzielnica()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Telefon</td>
+			<td th:text="${placowka_atr_single.getTelefon()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Dyrektor</td>
+			<td th:text="${placowka_atr_single.getDyrektor()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Email</td>
+			<td th:text="${placowka_atr_single.getEmail()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Liczba uczniów</td>
+			<td th:text="${placowka_atr_single.getLiczba_uczniow()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Liczba nauczycieli</td>
+			<td th:text="${placowka_atr_single.getLiczba_nauczycieli()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>
+	    <tr>
+			<td>Opis boiska</td>
+			<td th:text="${placowka_atr_single.getBoiskoopis()}">xxx</td>
+			<td>m. kw.</td>
+	    </tr>	    
+	    </table>
+	 </div>
+
+
+
+</div>
+</div>
+</body>
+</html>
